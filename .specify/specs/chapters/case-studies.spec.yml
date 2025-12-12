@@ -1,0 +1,15 @@
+id: case-studies
+title: Case Studies and Real-World Applications
+word_count:
+  target: 800
+sections:
+  - title: Enterprise case study
+    description: Document a reproducible enterprise example (architecture, outcomes, citations).
+  - title: Academic research case study
+    description: Document university-lab project showing reproducibility and verification.
+  - title: Lessons learned and limitations
+    description: Traceable analysis supported by citations.
+success_criteria:
+  - At least 3 case examples with sources
+prompts:
+  - specs/prompts/case-studies-generation.prompt.md

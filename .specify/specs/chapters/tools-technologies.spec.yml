@@ -1,0 +1,20 @@
+id: tools-technologies
+title: Tools, Technologies, and Infrastructure
+word_count:
+  target: 1200
+sections:
+  - title: Overview of AI-native toolchain
+    description: Describe tool categories: spec management, model orchestration, CI/CD, testing, provenance.
+  - title: Spec-Kit Plus and rendering pipeline
+    description: Explain `spec-kit render` workflow and metadata for citations.
+  - title: Gemini and model usage
+    description: Describe how Gemini (or configured LLM) will be used for drafting, source-evaluation and rewriting.
+  - title: Reproducibility infrastructure
+    description: Versioning, provenance, data and model config tracking.
+  - title: Example integrations
+    description: Show minimal integration patterns (spec -> gemini -> test -> docusaurus).
+success_criteria:
+  - At least 5 peer-reviewed or authoritative sources
+  - Contains an example `spec-kit render` run and expected output
+prompts:
+  - specs/prompts/tools-technologies-generation.prompt.md

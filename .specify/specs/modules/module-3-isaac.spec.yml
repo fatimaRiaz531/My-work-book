@@ -1,0 +1,136 @@
+id: module-3-isaac
+title: 'Module 3: The AI-Robot Brain (NVIDIA Isaac)'
+word_count: 5000
+order: 3
+
+overview: |
+  NVIDIA Isaac ecosystem (Isaac Sim, Isaac ROS) brings AI-accelerated perception, planning,
+  and control to robots. This module covers synthetic data generation, hardware-accelerated
+  SLAM, navigation, and reinforcement learning—enabling robots to perceive and navigate
+  complex, dynamic environments.
+
+learning_outcomes:
+  - Master NVIDIA Isaac Sim for synthetic data generation
+  - Implement domain randomization for robust learning
+  - Deploy hardware-accelerated VSLAM with Isaac ROS
+  - Plan paths for bipedal humanoid locomotion with Nav2
+  - Train reinforcement learning policies for robot control
+  - Understand sim-to-real transfer techniques
+
+sections:
+  - section_id: isaac-ecosystem
+    title: 'NVIDIA Isaac Ecosystem Overview'
+    word_count: 600
+    key_points:
+      - Isaac Sim: Synthetic data and training
+      - Isaac ROS: Hardware-accelerated inference
+      - Jetson platform for edge deployment
+      - Omniverse infrastructure
+      - PhysX for physics simulation
+    citations_needed: 4
+
+  - section_id: isaac-sim
+    title: 'Isaac Sim: Photorealistic Simulation and Data Generation'
+    word_count: 1000
+    key_points:
+      - Isaac Sim architecture and Python API
+      - Loading robots and environments (USD format)
+      - Rendering photorealistic images
+      - Domain randomization techniques
+      - Data collection pipelines (pose, depth, normal maps)
+      - Segmentation and ground truth labels
+    citations_needed: 5
+    code_example_count: 2
+    runnable_examples:
+      - Spinning up Isaac Sim headless
+      - Collecting synthetic dataset with randomization
+
+  - section_id: isaac-ros-perception
+    title: 'Isaac ROS: Hardware-Accelerated Perception'
+    word_count: 1200
+    key_points:
+      - Isaac ROS modules (image encoder, NITROS)
+      - Visual SLAM (VSLAM) for localization
+      - Depth estimation from monocular/stereo images
+      - Object detection and pose estimation
+      - Deploying on Jetson Orin hardware
+      - Performance optimization (GPU vs. CPU)
+    citations_needed: 5
+    code_example_count: 3
+    runnable_examples:
+      - Setting up Isaac ROS VSLAM node
+      - Subscribing to depth and tracking humanoid pose
+      - Visualizing odometry in RViz
+
+  - section_id: nav2-humanoid
+    title: 'Nav2: Path Planning for Bipedal Locomotion'
+    word_count: 900
+    key_points:
+      - Nav2 architecture (costmap, planner, controller)
+      - Humanoid-specific planning constraints
+      - Collision avoidance for bipeds
+      - Foot placement planning
+      - Integrating with walking controllers
+    citations_needed: 4
+    code_example_count: 2
+    runnable_examples:
+      - Nav2 config file for humanoid
+      - Goal request and path monitoring
+
+  - section_id: reinforcement-learning
+    title: 'Reinforcement Learning for Robot Control'
+    word_count: 1000
+    key_points:
+      - RL fundamentals and reward design
+      - Policy gradients and actor-critic methods
+      - Training in simulation (Isaac Sim)
+      - Domain randomization for robustness
+      - Evaluating learned policies
+      - Transfer to real robots
+    citations_needed: 5
+    code_example_count: 2
+    runnable_examples:
+      - PPO policy training loop
+      - Evaluating humanoid gait policy
+
+  - section_id: sim-to-real
+    title: 'Sim-to-Real Transfer: Bridging the Gap'
+    word_count: 900
+    key_points:
+      - Sim-to-real gap and sources of mismatch
+      - System identification techniques
+      - Randomization and robust training
+      - Fine-tuning on real hardware
+      - Cost and risk mitigation
+    citations_needed: 4
+    code_example_count: 1
+
+  - section_id: hands-on-isaac
+    title: 'Hands-On: Train a Humanoid Walking Policy'
+    word_count: 1400
+    key_points:
+      - Setting up Isaac Sim environment
+      - Defining reward function for bipedal walking
+      - Training policy with domain randomization
+      - Evaluating on diverse terrains
+      - Deploying to Jetson Orin for inference
+      - Measuring real-world performance metrics
+    citations_needed: 4
+    code_example_count: 3
+    runnable_examples:
+      - Complete training script
+      - Deployment script for Jetson
+      - Evaluation metrics dashboard
+
+total_code_examples: 6
+total_citations_needed: 31
+min_peer_reviewed_sources: 12
+
+success_criteria:
+  - Exactly 5000 ± 300 words
+  - Every claim verified by citation [CITATION_N]
+  - 6 code examples (Python, YAML) all syntactically correct
+  - Readers understand Isaac Sim workflow after module
+  - Clear hardware requirements for Isaac Sim (RTX 4070 Ti minimum)
+  - Links to official NVIDIA documentation included
+  - Performance comparison tables (Gazebo vs. Isaac vs. Real)

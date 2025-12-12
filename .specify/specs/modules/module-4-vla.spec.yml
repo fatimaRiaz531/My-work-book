@@ -1,0 +1,123 @@
+id: module-4-vla
+title: 'Module 4: Vision-Language-Action (VLA)'
+word_count: 4500
+order: 4
+
+overview: |
+  Vision-Language-Action (VLA) models represent the convergence of large language models,
+  computer vision, and robotic control. This final module teaches how to integrate LLMs
+  (GPT, Claude) with robotic systems to enable natural language commands, task planning,
+  and adaptive behavior in unstructured environments.
+
+learning_outcomes:
+  - Understand Vision-Language-Action (VLA) model architectures
+  - Integrate LLMs with ROS 2 for task planning
+  - Use speech recognition (Whisper) for voice control
+  - Design multi-modal reward functions
+  - Build end-to-end autonomous systems
+  - Deploy conversational robots with LLM reasoning
+
+sections:
+  - section_id: vla-fundamentals
+    title: 'Vision-Language-Action (VLA) Fundamentals'
+    word_count: 700
+    key_points:
+      - Definition and difference from traditional robotics
+      - Multi-modal fusion (vision, language, proprioception)
+      - End-to-end learning vs. modular approaches
+      - Successful VLA models (RT-2, GATO, VLA-based systems)
+      - Advantages and limitations of LLM-based planning
+    citations_needed: 5
+
+  - section_id: voice-to-action
+    title: 'Voice-to-Action: Whisper and Speech Recognition'
+    word_count: 800
+    key_points:
+      - OpenAI Whisper for robust speech recognition
+      - Handling accents, background noise, domain-specific terms
+      - Real-time streaming vs. batch processing
+      - Integrating Whisper with ROS 2
+      - Voice command parsing and error handling
+    citations_needed: 3
+    code_example_count: 2
+    runnable_examples:
+      - Real-time voice transcription node
+      - Voice command → ROS 2 action translation
+
+  - section_id: llm-planning
+    title: 'Cognitive Planning: LLMs for Task Decomposition'
+    word_count: 1000
+    key_points:
+      - LLMs as task planners (reasoning over skills)
+      - Prompt engineering for robotics
+      - Handling ambiguity and clarification
+      - Breaking high-level goals into ROS 2 actions
+      - Verification and constraint checking
+      - Few-shot learning and in-context learning
+    citations_needed: 5
+    code_example_count: 2
+    runnable_examples:
+      - LLM prompt for task decomposition
+      - Action sequence verification
+
+  - section_id: multimodal-perception
+    title: 'Multi-Modal Perception: Vision + Language + Proprioception'
+    word_count: 800
+    key_points:
+      - Fusing vision (cameras, LiDAR) with language context
+      - Embodied understanding of spatial relationships
+      - Proprioceptive feedback for control
+      - Sensor fusion architectures
+      - Real-time processing on edge (Jetson)
+    citations_needed: 4
+    code_example_count: 1
+    runnable_examples:
+      - Multi-modal fusion pipeline
+
+  - section_id: integrating-llms
+    title: 'Integrating OpenAI/Claude APIs with ROS 2'
+    word_count: 900
+    key_points:
+      - API calls to GPT-4, GPT-4 Vision, Claude
+      - Structuring prompts for deterministic outputs
+      - Streaming responses for real-time interaction
+      - Handling API latency and timeouts
+      - Cost optimization (caching, batch processing)
+      - Privacy and security considerations
+    citations_needed: 4
+    code_example_count: 3
+    runnable_examples:
+      - Python ROS 2 node calling OpenAI API
+      - Streaming LLM response to robot
+      - Fallback behavior when API unavailable
+
+  - section_id: capstone-project
+    title: 'Capstone Project: Autonomous Humanoid Robot'
+    word_count: 1300
+    key_points:
+      - Project specification and success criteria
+      - Architecture overview (voice → LLM → perception → action)
+      - Implementation checklist
+      - Integration of all previous modules
+      - Testing and evaluation methodology
+      - Demo scenarios (room cleaning, object manipulation, interaction)
+    citations_needed: 4
+    code_example_count: 4
+    runnable_examples:
+      - Main orchestration script
+      - Goal planning module
+      - Perception and object detection
+      - Motor control executor
+
+total_code_examples: 5
+total_citations_needed: 25
+min_peer_reviewed_sources: 10
+
+success_criteria:
+  - Exactly 4500 ± 250 words
+  - Every claim supported by citation [CITATION_N]
+  - 5+ complete code examples (Python, YAML, JSON)
+  - Readers can build a conversational robot after module
+  - Clear capstone project definition with rubric
+  - Links to OpenAI, Claude, and other API docs
+  - Risk mitigation strategies documented

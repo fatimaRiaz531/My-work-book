@@ -1,0 +1,18 @@
+id: implementation-patterns
+title: Implementation Patterns and Best Practices
+word_count:
+  target: 1200
+sections:
+  - title: Common implementation patterns
+    description: Describe canonical patterns (spec-first CI, model-in-the-loop tests, dual-authoring).
+  - title: Testing and QA for AI-native systems
+    description: Unit tests, property-based tests, model behavior tests, and dataset checks.
+  - title: Security, privacy, and compliance
+    description: Address data handling, model provenance, and regulatory concerns.
+  - title: Team workflows and roles
+    description: How teams collaborate using specs and AI agents; governance.
+success_criteria:
+  - At least 4 peer-reviewed / authoritative sources
+  - Practical examples and checklist for adoption
+prompts:
+  - specs/prompts/implementation-patterns-generation.prompt.md

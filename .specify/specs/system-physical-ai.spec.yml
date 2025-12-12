@@ -1,0 +1,242 @@
+# Spec-Kit Plus System Specification for Physical AI & Humanoid Robotics Textbook
+# Generated: 2025-12-07
+# Hackathon: Build AI-Native Technical Textbook + RAG Chatbot
+
+id: physical-ai-robotics-book-system
+title: 'Physical AI & Humanoid Robotics: From Digital Twins to Embodied Intelligence'
+version: 1.0.0
+owner: hackathon_participant
+
+mission: |
+  Create a comprehensive, publication-ready technical textbook for the Physical AI & Humanoid Robotics
+  course. The book covers ROS 2, Gazebo, NVIDIA Isaac, and Vision-Language-Action (VLA) systems.
+
+  Deliverables:
+  1. Spec-driven book using Docusaurus and GitHub Pages
+  2. Embedded RAG chatbot powered by FastAPI, Qdrant, and OpenAI
+  3. Better-Auth authentication with personalized learning paths
+  4. Multi-language support (English + Urdu)
+  5. All code examples runnable and tested
+
+core_principles:
+  - Technical Excellence: Accuracy verified against official ROS 2, Gazebo, NVIDIA docs
+  - Practical Orientation: Every module includes runnable code, experiments, and hands-on labs
+  - Accessibility: Written for AI engineers transitioning to robotics; no robotics background assumed
+  - Reproducibility: All commands, code, and environments specified in detail
+  - AI-Native: Uses Claude Code, Spec-Kit Plus, and RAG for interactive learning
+
+deployment:
+  platform: github_pages
+  repository: yourusername/humanoid-robotics-ai
+  baseUrl: /humanoid-robotics-ai/
+  chatbot_backend: FastAPI (deployed separately on Vercel or Railway)
+  database: Qdrant Cloud Free Tier
+  auth: Better-Auth (self-hosted or cloud)
+
+requirements:
+  total_word_count:
+    min: 15000
+    max: 25000
+  total_modules: 4
+  per_module_word_count: 3500-5500
+  sources:
+    min: 40
+    peer_reviewed_min_percent: 60
+    categories:
+      - Peer-reviewed robotics papers (IEEE, ROS Journal)
+      - Official documentation (ROS 2, Gazebo, NVIDIA Isaac)
+      - Hardware datasheets (Jetson, RealSense, Unitree)
+      - Robotics textbooks (Siciliano, Spong, Lynch & Park)
+  plagiarism_tolerance: 0.0
+  citation_format: APA_7th_edition
+  readability_grade_level: 11-13
+  code_examples:
+    per_module: 4-6
+    languages: [python, cpp, yaml, bash]
+    requirement: All examples must be runnable or provide clear execution context
+  diagrams:
+    requirement: URDF visualizations, ROS node graphs, Isaac Sim screenshots
+
+book_structure:
+  title: 'Physical AI & Humanoid Robotics: A Practical Guide'
+  subtitle: 'From Simulation to Real-World Deployment Using ROS 2, Gazebo, NVIDIA Isaac, and LLMs'
+  chapters:
+    - module_id: module-1-ros2
+      title: 'Module 1: The Robotic Nervous System (ROS 2)'
+      word_count: 4000
+      subtopics:
+        - ROS 2 architecture and philosophy
+        - Nodes, topics, services, and actions
+        - Building ROS 2 packages with Python (rclpy)
+        - URDF fundamentals for humanoid description
+        - Hands-on: Create and deploy a simple ROS 2 robot controller
+      code_examples: 5
+      min_sources: 10
+      file: book/docs/module-1-ros2.md
+
+    - module_id: module-2-digital-twin
+      title: 'Module 2: The Digital Twin (Gazebo & Unity)'
+      word_count: 4500
+      subtopics:
+        - Physics simulation fundamentals
+        - Gazebo environment and robot simulation
+        - SDF and URDF for Gazebo
+        - Sensor simulation (LiDAR, depth cameras, IMUs)
+        - Unity for high-fidelity visualization
+        - Human-robot interaction in VR
+      code_examples: 5
+      min_sources: 10
+      file: book/docs/module-2-gazebo-unity.md
+
+    - module_id: module-3-isaac
+      title: 'Module 3: The AI-Robot Brain (NVIDIA Isaac)'
+      word_count: 5000
+      subtopics:
+        - NVIDIA Isaac Sim architecture
+        - Synthetic data generation and domain randomization
+        - Isaac ROS and hardware-accelerated VSLAM
+        - Nav2 path planning for humanoids
+        - Reinforcement learning for robot control
+        - Sim-to-real transfer techniques
+      code_examples: 6
+      min_sources: 12
+      file: book/docs/module-3-isaac.md
+
+    - module_id: module-4-vla
+      title: 'Module 4: Vision-Language-Action (VLA)'
+      word_count: 4500
+      subtopics:
+        - Voice-to-action with Whisper
+        - LLMs for cognitive planning and task decomposition
+        - Multi-modal perception (vision + language + proprioception)
+        - Integrating OpenAI/Claude with ROS 2
+        - Capstone project: Autonomous humanoid robot
+      code_examples: 5
+      min_sources: 10
+      file: book/docs/module-4-vla.md
+
+    - section_id: references
+      title: 'References & Further Reading'
+      file: book/docs/references.md
+
+appendices:
+  - id: hardware-setup
+    title: 'Appendix A: Hardware Setup Guide'
+    subsections:
+      - Jetson Orin Nano Development Kit assembly
+      - RealSense camera calibration
+      - ROS 2 on Jetson (JetPack installation)
+      - Budget alternatives and troubleshooting
+    file: book/docs/appendix-hardware.md
+
+  - id: ros2-reference
+    title: 'Appendix B: ROS 2 Command Reference'
+    file: book/docs/appendix-ros2-commands.md
+
+features:
+  rag_chatbot:
+    enabled: true
+    description: 'Embedded chatbot answering questions about book content'
+    technologies:
+      - FastAPI backend
+      - Qdrant vector database
+      - OpenAI Embeddings API
+      - Streaming chat with context selection
+    capabilities:
+      - Answer questions from book content
+      - Answer based on user-selected text passages
+      - Provide code examples and clarifications
+      - Reference chapter and section numbers
+    integration_points:
+      - Docusaurus sidebar component
+      - Chapter floating button
+      - Full-page chatbot view
+
+  authentication:
+    enabled: true
+    provider: 'Better-Auth'
+    signup_questions:
+      - 'What is your background? (Software Engineer / Roboticist / Student / Other)'
+      - 'Have you used ROS 2 before? (Yes / No / Beginner)'
+      - 'Hardware experience? (Jetson / Arduino / None)'
+      - 'Preferred learning style? (Theory-heavy / Hands-on / Balanced)'
+    features:
+      - Personalized chapter navigation
+      - Saved progress and bookmarks
+      - Personalized code examples based on experience level
+
+  personalization:
+    enabled: true
+    description: 'Adapt content complexity based on user background'
+    implementation:
+      - Toggle button at chapter start
+      - Content variants: Beginner / Intermediate / Advanced
+      - Example selection based on user hardware
+      - Difficulty level indicators
+
+  translation:
+    enabled: true
+    languages: [english, urdu]
+    implementation:
+      - Toggle button at chapter start
+      - Dynamic translation API or pre-translated content
+      - Preserves code blocks and technical terms
+      - Links to original English for technical reference
+
+workflow:
+  - step: 1
+    name: 'Define Specifications'
+    tool: Spec-Kit Plus
+    input: 'Module specs with structure, code examples, citation counts'
+    output: '.specify/specs/modules/'
+
+  - step: 2
+    name: 'Create Prompt Templates'
+    tool: Claude Code
+    input: 'Module spec + success criteria'
+    output: '.specify/specs/prompts/'
+
+  - step: 3
+    name: 'Generate Chapter Drafts'
+    tool: Claude API + Spec-Kit Plus render
+    input: 'Module spec + prompt template'
+    output: 'book/docs/module-X.md'
+
+  - step: 4
+    name: 'Verify and Polish'
+    tool: Human review + plagiarism checker
+    input: 'Generated chapter with citations'
+    output: 'Verified markdown with linked references'
+
+  - step: 5
+    name: 'Build RAG Knowledge Base'
+    tool: FastAPI + Qdrant
+    input: 'All chapters + references'
+    output: 'Vector embeddings + API endpoints'
+
+  - step: 6
+    name: 'Integrate Chatbot'
+    tool: Docusaurus + React component
+    input: 'RAG API endpoints + auth'
+    output: 'Chatbot in Docusaurus site'
+
+  - step: 7
+    name: 'Deploy'
+    tool: GitHub Pages + Vercel/Railway
+    input: 'Built site + backend services'
+    output: 'Live book with chatbot at custom domain'
+
+success_criteria:
+  - All 4 modules drafted with ~4000-5000 words each
+  - Total word count: 15,000-25,000 words
+  - 40+ sources cited (60%+ peer-reviewed)
+  - 20+ runnable code examples
+  - 0% plagiarism
+  - Docusaurus build succeeds
+  - RAG chatbot responds accurately to queries
+  - Better-Auth sign-up/sign-in fully functional
+  - Chapter personalization toggles work
+  - Urdu translation available for all modules
+  - All links clickable and functional
+  - Demo video <90 seconds submitted
+  - GitHub Pages deployment live and accessible

@@ -1,0 +1,106 @@
+# Spec-Kit Plus system specification for AI-Native Software Development book
+# Generated: 2025-12-07
+
+id: ai-native-book-system
+title: AI-Native Software Development — Spec-Driven Book
+version: 1.0.0
+owner: yourusername
+
+mission: |
+  Create a rigorously researched, academically credible AI-native software development
+  research paper rendered to Markdown via Spec-Kit Plus, published with Docusaurus
+  and deployed to GitHub Pages. Content generation workflows use Spec-Kit Plus specs
+  together with Gemini (or configured agent) for drafting, verifying, and refining text and citations.
+
+core_principles:
+  - accuracy: 'All factual claims must be traceable to verifiable primary sources.'
+  - reproducibility: 'Specs must render reproducible Markdown with embedded citation metadata.'
+  - rigor: 'Prioritize peer-reviewed literature and official documentation; minimum 50% peer-reviewed.'
+  - clarity: 'Target Flesch-Kincaid grade 10–12; tone scholarly and neutral.'
+  - zero_plagiarism: '0% tolerance; all text must be original or properly attributed.'
+
+outputs:
+  - type: docs_markdown
+    path: book/docs
+    renderer: spec-kit render
+  - type: pdf_export
+    path: book/build/ai-native-book.pdf
+    renderer: pandoc # or docusaurus markdown -> PDF pipeline
+
+deployment:
+  platform: github_pages
+  repository: yourusername/humanoid-robotic-book
+  baseUrl: /humanoid-robotic-book/
+  deploy_command: npm run deploy
+
+requirements:
+  word_count:
+    min: 5000
+    max: 7000
+  min_sources: 15
+  peer_reviewed_ratio: 0.5
+  citation_style: apa-7
+  plagiarism_tolerance: 0.0
+  readability:
+    target_flesch_kincaid_grade_min: 10
+    target_flesch_kincaid_grade_max: 12
+
+workflow:
+  - step: define_specs
+    tool: spec-kit
+    command: spec-kit init
+  - step: author_chapters
+    tool: gemini
+    command: gemini generate --spec {chapter_spec}
+  - step: render_markdown
+    tool: spec-kit
+    command: spec-kit render
+  - step: import_to_docusaurus
+    action: copy rendered markdown to book/docs
+  - step: build_site
+    tool: npm/docusaurus
+    command: npm run build
+  - step: export_pdf
+    tool: pandoc
+    command: spec-kit export --format pdf
+  - step: deploy
+    tool: npm/docusaurus
+    command: npm run deploy
+
+validation:
+    - verify_citations:
+      description: 'All in-text claims have at least one source reference and corresponding entry in references.md'
+      tool: gemini + manual-review
+  - plagiarism_check:
+      description: 'Run plagiarism scan with 0% tolerance'
+      tool: turnitin or similar
+  - readability_check:
+      description: 'Ensure Flesch-Kincaid grade within 10–12'
+      tool: textstat or readability package
+
+specs:
+  chapters:
+    - file: specs/chapters/intro.spec.yml
+      id: intro
+      title: Introduction to AI-Native Software Development
+    - file: specs/chapters/spec-driven-development.spec.yml
+      id: spec-driven-development
+      title: Spec-Driven Development Principles
+    - file: specs/chapters/tools-technologies.spec.yml
+      id: tools-technologies
+      title: Tools, Technologies, and Infrastructure
+    - file: specs/chapters/implementation-patterns.spec.yml
+      id: implementation-patterns
+      title: Implementation Patterns and Best Practices
+    - file: specs/chapters/case-studies.spec.yml
+      id: case-studies
+      title: Case Studies and Real-World Applications
+    - file: specs/chapters/references.spec.yml
+      id: references
+      title: References and Appendices
+
+prompts_path: specs/prompts
+
+notes: |
+  - Replace `yourusername` with your GitHub username before deploying.
+  - Use `gemini` (or your configured agent) for generation and `spec-kit render` to produce Markdown suitable for Docusaurus.

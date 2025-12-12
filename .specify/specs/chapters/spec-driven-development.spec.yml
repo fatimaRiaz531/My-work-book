@@ -1,0 +1,21 @@
+id: spec-driven-development
+title: Spec-Driven Development Principles
+word_count:
+  target: 1200
+sections:
+  - title: Definition and theoretical foundations
+    description: Provide formal definitions and connect to CS theory (formal methods, software specifications).
+  - title: SDD workflow in AI-native context
+    description: Describe how specs are authored, validated, and consumed by AI agents (e.g., Gemini or configured LLM).
+  - title: Specification languages and formats
+    description: Compare YAML/JSON schemas, OpenAPI, TLA+/Alloy, Spec-Kit Plus formats.
+  - title: Case examples and minimal patterns
+    description: Short worked examples showing spec -> generated code -> tests.
+  - title: Validation and verification
+    description: Discuss verification techniques and citation-backed evidence.
+success_criteria:
+  - All claims have inline citations (APA 7)
+  - At least 6 peer-reviewed sources cited
+  - Contains at least one runnable code example
+prompts:
+  - specs/prompts/spec-driven-generation.prompt.md

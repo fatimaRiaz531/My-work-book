@@ -1,0 +1,111 @@
+id: module-2-gazebo-unity
+title: 'Module 2: The Digital Twin (Gazebo & Unity)'
+word_count: 4500
+order: 2
+
+overview: |
+  Digital twins enable safe, low-cost experimentation before deploying to physical robots.
+  This module covers physics simulation in Gazebo, sensor simulation, and high-fidelity
+  visualization in Unity for human-robot interaction scenarios.
+
+learning_outcomes:
+  - Build simulated robot environments in Gazebo
+  - Describe robots using SDF and URDF for simulation
+  - Simulate realistic sensors (LiDAR, depth cameras, IMUs)
+  - Use Unity for photorealistic rendering and visualization
+  - Create safe testing scenarios for robot behaviors
+
+sections:
+  - section_id: digital-twin-concept
+    title: 'The Digital Twin Concept in Robotics'
+    word_count: 600
+    key_points:
+      - Definition and benefits of digital twins
+      - Simulation vs. reality gap
+      - Cost-benefit analysis for robot development
+      - When to use Gazebo vs. Isaac Sim vs. Unity
+    citations_needed: 4
+
+  - section_id: gazebo-fundamentals
+    title: 'Gazebo: Physics Simulation Engine'
+    word_count: 1000
+    key_points:
+      - Gazebo architecture and physics engines
+      - World files (SDF format)
+      - Models and plugins
+      - Running Gazebo with ROS 2 bridge
+      - Tuning physics parameters
+    citations_needed: 4
+    code_example_count: 2
+
+  - section_id: urdf-sdf-sim
+    title: 'URDF vs. SDF for Simulation'
+    word_count: 800
+    key_points:
+      - SDF advantages over URDF for simulation
+      - Converting URDF to SDF
+      - Simulation-specific properties (friction, damping)
+      - Contact materials and collisions
+    citations_needed: 3
+    code_example_count: 2
+    runnable_examples:
+      - Simple robot world file
+      - Humanoid walking simulation in Gazebo
+
+  - section_id: sensor-simulation
+    title: 'Sensor Simulation: LiDAR, Depth, IMU'
+    word_count: 900
+    key_points:
+      - LiDAR simulation and point clouds
+      - RGB-D depth camera simulation
+      - IMU accelerometer and gyroscope noise models
+      - Realistic sensor effects (noise, latency, dropout)
+      - Publishing simulated sensor data as ROS topics
+    citations_needed: 4
+    code_example_count: 2
+    runnable_examples:
+      - LiDAR plugin in Gazebo with ROS interface
+      - Depth camera publishing point clouds
+
+  - section_id: unity-visualization
+    title: 'Unity for High-Fidelity Visualization and VR'
+    word_count: 900
+    key_points:
+      - Unity as complementary tool to Gazebo
+      - Real-time rendering for human-robot interaction
+      - VR training and teleoperation scenarios
+      - Hand-eye coordination in humanoid design
+      - Connecting Unity to ROS 2 (rosbridge, ROS#)
+    citations_needed: 3
+    code_example_count: 2
+    runnable_examples:
+      - Simple scene with humanoid avatar
+      - ROS 2 message streaming to Unity
+
+  - section_id: hands-on-simulation
+    title: 'Hands-On: Simulate a Humanoid Walking'
+    word_count: 1300
+    key_points:
+      - Building a complete simulation world
+      - Implementing walk controller in Python/ROS 2
+      - Monitoring joint angles and forces
+      - Tuning gait parameters for stability
+      - Recording and analyzing simulation results
+    citations_needed: 4
+    code_example_count: 2
+    runnable_examples:
+      - Complete Gazebo world with humanoid
+      - Walking gait controller code
+      - Analysis script for motion capture data
+
+total_code_examples: 5
+total_citations_needed: 22
+min_peer_reviewed_sources: 10
+
+success_criteria:
+  - Exactly 4500 ± 250 words
+  - Every technical claim has citation placeholder [CITATION_N]
+  - All code examples are complete and valid YAML, Python, C#
+  - Readers can set up Gazebo simulation after module
+  - Clear prerequisites and hardware requirements listed
+  - Screenshots or ASCII diagrams of sensor data included

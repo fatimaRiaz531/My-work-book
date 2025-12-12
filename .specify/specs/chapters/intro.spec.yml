@@ -1,0 +1,15 @@
+id: intro
+title: Introduction to AI-Native Software Development
+word_count:
+  target: 800
+sections:
+  - title: Abstract
+    description: Short abstract and scope of the paper.
+  - title: Definitions and key terms
+    description: Define AI-native, Spec-Driven Development, reproducibility.
+  - title: Methodology and success criteria
+    description: Explain research methods used and verification steps.
+success_criteria:
+  - Contains abstract, definitions, and methodology
+prompts:
+  - specs/prompts/intro-generation.prompt.md

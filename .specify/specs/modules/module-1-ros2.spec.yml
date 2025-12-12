@@ -1,0 +1,98 @@
+id: module-1-ros2
+title: 'Module 1: The Robotic Nervous System (ROS 2)'
+word_count: 4000
+order: 1
+
+overview: |
+  ROS 2 is the middleware that connects digital controllers to physical (or simulated) robots.
+  This module explains ROS 2's architecture, core concepts (nodes, topics, services), and 
+  how to build practical Python packages that control humanoid robots.
+
+learning_outcomes:
+  - Understand ROS 2 middleware architecture and design principles
+  - Create and manage ROS 2 nodes using Python (rclpy)
+  - Implement publishers, subscribers, and services
+  - Write URDF descriptions for humanoid robots
+  - Deploy ROS 2 control systems to edge hardware
+
+sections:
+  - section_id: ros2-intro
+    title: 'Introduction to ROS 2'
+    word_count: 600
+    key_points:
+      - ROS 2 is a robotics middleware, not an OS
+      - Client-library model (rclpy, rclcpp)
+      - Pub-sub architecture for distributed computing
+      - DDS (Data Distribution Service) as communication layer
+    citations_needed: 3
+
+  - section_id: ros2-concepts
+    title: 'Core Concepts: Nodes, Topics, Services, Actions'
+    word_count: 800
+    key_points:
+      - Nodes as independent processes
+      - Topics for asynchronous messaging
+      - Services for synchronous RPC
+      - Actions for long-running tasks
+      - Parameters for configuration
+    citations_needed: 4
+    code_example_count: 2
+
+  - section_id: python-rclpy
+    title: 'Building ROS 2 Packages with Python (rclpy)'
+    word_count: 1000
+    key_points:
+      - Package structure (setup.py, setup.cfg, package.xml)
+      - Creating and spinning nodes
+      - Publisher/subscriber patterns
+      - Service server/client patterns
+      - Debugging with rclpy
+    citations_needed: 3
+    code_example_count: 3
+    runnable_examples:
+      - Simple node that publishes sensor data
+      - Subscriber listening to actuator commands
+      - Service server handling goal requests
+
+  - section_id: urdf-fundamentals
+    title: 'URDF: Describing Humanoid Robot Structure'
+    word_count: 800
+    key_points:
+      - URDF XML format and structure
+      - Links and joints for kinematic chains
+      - Inertia, collision, and visual properties
+      - Humanoid-specific considerations (biped stability)
+      - Loading URDF into Gazebo/RViz
+    citations_needed: 3
+    code_example_count: 2
+    runnable_examples:
+      - Simple 3-DOF arm URDF
+      - Partial humanoid leg with joints
+
+  - section_id: ros2-controller
+    title: 'Hands-On: Building a ROS 2 Robot Controller'
+    word_count: 800
+    key_points:
+      - Connecting to hardware drivers
+      - Receiving goal commands from higher-level planners
+      - Sending motor control signals
+      - Real-time constraints and determinism
+      - Testing on Jetson vs. Gazebo
+    citations_needed: 3
+    code_example_count: 3
+    runnable_examples:
+      - Mock robot driver (no hardware required)
+      - Joint position controller
+      - Velocity profiler for smooth motion
+
+total_code_examples: 5
+total_citations_needed: 16
+min_peer_reviewed_sources: 7
+
+success_criteria:
+  - Exactly 4000 ± 200 words
+  - Every claim supported by citation placeholder [CITATION_N]
+  - All 5 code examples are syntactically correct Python or YAML
+  - Beginner can understand ROS 2 fundamentals after reading
+  - Clear prerequisites listed
+  - Links to official ROS 2 documentation included
