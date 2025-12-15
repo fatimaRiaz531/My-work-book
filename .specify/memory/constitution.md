@@ -1,57 +1,72 @@
-# AI-Native Software Development — Spec-Driven Book Creation Constitution
+<!-- SYNC IMPACT REPORT
+Version change: 1.0.0 → 1.1.0
+Modified principles: All principles updated for RAG Chatbot project
+Added sections: Technical standards section with backend, LLM integration, databases, and frontend requirements
+Removed sections: Old book creation specific sections
+Templates requiring updates: ✅ Updated /specify/templates/plan-template.md, ✅ Updated /specify/templates/spec-template.md, ✅ Updated /specify/templates/tasks-template.md
+Follow-up TODOs: None
+-->
+
+# Integrated RAG Chatbot for a Published Technical Book — Constitution
 
 ## Core Principles
 
-### I. Accuracy & Reproducibility
+### I. Accuracy
 
-Every claim must be traceable to cited, high-quality primary sources (papers, official docs, credible research). At least 50% peer-reviewed academic sources required.
+All chatbot answers must be grounded strictly in the book content. No information outside the book should be provided by the chatbot.
 
-### II. Clarity & Academic Rigor
+### II. Faithfulness
 
-Content must be clear for a computer science academic audience. Flesch-Kincaid readability grade: 10–12. Tone: scholarly, precise, and neutral.
+No hallucination; answers must be traceable to retrieved chunks. Every response must be verifiable against the source material.
 
-### III. Originality & Plagiarism
+### III. Reproducibility
 
-Zero tolerance for plagiarism; all sections must be fully original.
+RAG pipeline must be fully reproducible locally and in deployment. All processes should be documented and repeatable.
 
-### IV. Spec-Driven Content Generation
+### IV. Security
 
-Use Spec-Kit Plus for structure, chapter specifications, and reproducible content generation. Gemini (or another configured LLM agent) for chapter drafting, fact verification, and iterative refinement.
+API keys must be handled via environment variables only. No hardcoded credentials or secrets in the codebase.
 
-## Writing Standards
+### V. Accessibility
 
-- **Citation Style:** APA (7th edition) for all references.
-- **Word Count:** 5,000–7,000 words target.
-- **Sources:** Minimum 15 high-quality sources; 50%+ peer-reviewed journal or conference papers.
-- **Validation:** All claims must be validated with in-text citations.
-- **Structure:** Include glossary, introduction, body chapters, conclusion, references.
+Chatbot must support answering from full book and user-selected text. Multiple interaction modes should be available.
+
+## Technical Standards
+
+- **Backend:** FastAPI (Python)
+- **LLM Integration:** OpenAI Agents SDK / ChatKit SDK
+- **Vector Database:** Qdrant Cloud (Free Tier)
+- **Relational Database:** Neon Serverless Postgres
+- **Frontend Embed:** Docusaurus-compatible widget or iframe
+- **Retrieval:** Semantic vector search + optional metadata filtering
+- **Citation:** Responses must reference source sections/pages when applicable
 
 ## Technical Requirements
 
-- **Build Structure:** Use Spec-Kit Plus with `/spec/chapters`, `/spec/system`, `/spec/prompts`, `/spec/research`.
-- **Content Generation:** Use `spec-kit render` to generate Markdown output.
-- **Publishing:** Integrate rendered Markdown into Docusaurus `/docs`.
-- **Deployment:** Deploy final book to GitHub Pages using Docusaurus deployment workflow.
-- **Final Format:** PDF version generated with embedded APA citations.
+- **Build Structure:** Use Spec-Kit Plus with `/spec/features`, `/spec/system`, `/spec/api`, `/spec/models`.
+- **Content Processing:** Implement document chunking and embedding pipeline.
+- **Publishing:** Integrate chatbot widget into Docusaurus documentation pages.
+- **Deployment:** Deploy to cloud platform with secure API key management.
+- **Final Format:** Embeddable chat widget with full RAG functionality.
 
 ## Content Quality Requirements
 
-- **Plagiarism:** Must pass plagiarism screening (0% tolerance).
-- **Fact-Checking:** Must pass fact-checking review.
-- **Clarity:** All sections written with academic clarity.
-- **Visuals:** Figures or diagrams must be referenced and explained.
-- **Consistency:** Ensure consistency in terminology, definitions, and tone.
+- **Grounding:** All responses must be grounded in book content.
+- **Traceability:** Citations must point to specific sections/pages in the source book.
+- **Relevance:** Responses must be contextually relevant to user queries.
+- **Completeness:** Provide comprehensive answers based on available content.
+- **Consistency:** Maintain consistent tone and accuracy across all responses.
 
 ## Success Criteria
 
-- Book fully generated using Spec-Kit Plus specifications.
-- All chapters verified with citations and reproducibility standards.
-- Build passes Docusaurus compile and GitHub Pages deployment.
-- PDF version generated with embedded APA citations.
-- Meets all academic, readability, and fact-checking requirements.
+- Chatbot fully integrated with RAG pipeline.
+- All responses verified with source citations and grounding requirements.
+- Build passes deployment and security checks.
+- Widget integrates seamlessly with Docusaurus documentation.
+- Meets all accuracy, faithfulness, and security requirements.
 
 ## Governance
 
 This constitution supersedes all other project practices. Amendments require documentation, approval, and a migration plan. All PRs/reviews must verify compliance. Complexity must be justified.
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-07 | **Last Amended**: 2025-12-07
+**Version**: 1.1.0 | **Ratified**: 2025-12-14 | **Last Amended**: 2025-12-14

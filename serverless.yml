@@ -1,0 +1,36 @@
+# Serverless deployment configuration for AWS Lambda
+
+service: rag-chatbot
+
+provider:
+  name: aws
+  runtime: python3.11
+  region: us-east-1
+  environment:
+    OPENAI_API_KEY: ${env:OPENAI_API_KEY}
+    QDRANT_URL: ${env:QDRANT_URL}
+    QDRANT_API_KEY: ${env:QDRANT_API_KEY}
+    DATABASE_URL: ${env:DATABASE_URL}
+    SECRET_KEY: ${env:SECRET_KEY}
+
+functions:
+  api:
+    handler: backend/serverless_handler.handler
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
+      - http:
+          path: /
+          method: ANY
+          cors: true
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
+    slim: true
+    strip: false

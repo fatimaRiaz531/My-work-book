@@ -3,12 +3,34 @@
 .env.local
 .env.*.local
 chatbot/.env
+!.env.example
 
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.pytest_cache/
+.coverage
+htmlcov/
+.hypothesis/
 .Python
 env/
 venv/
@@ -17,32 +39,58 @@ ENV/
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Node
+# Node.js (for frontend)
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+dist/
+build/
+coverage/
+.nyc_output/
+
+# Logs
+*.log
+logs/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Database
+*.db
+*.db-journal
+
+# Backend specific
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+
+# Frontend specific
+frontend/chat-widget/node_modules/
+frontend/chat-widget/dist/
+frontend/chat-widget/build/
+frontend/chat-widget/.next/
+
+# Ingestion specific
+ingestion/__pycache__/
+ingestion/*.py[cod]
+ingestion/*$py.class
 
 # Docusaurus build
 book/build/
 book/.docusaurus/
 book/.cache-loader/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-
-# Temporary files
-*.tmp
-*.temp
 

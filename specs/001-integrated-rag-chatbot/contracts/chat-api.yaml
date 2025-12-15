@@ -1,0 +1,117 @@
+# API Contract: RAG Chatbot API
+
+## Overview
+This document defines the API contracts for the RAG Chatbot system, supporting both global book queries and selection-based queries.
+
+## Base URL
+`/api/v1`
+
+## Authentication
+All endpoints require API key authentication via header:
+`Authorization: Bearer {API_KEY}`
+
+## Endpoints
+
+### Chat - Global Mode
+`POST /chat`
+
+Initiates a conversation or continues an existing one using the entire book corpus for context.
+
+**Request Body:**
+```json
+{
+  "message": "string, the user's message or question",
+  "session_id": "string, optional session identifier",
+  "history": [
+    {
+      "role": "string, either 'user' or 'assistant'",
+      "content": "string, previous message content"
+    }
+  ]
+}
+```
+
+**Response:**
+```json
+{
+  "response": "string, the chatbot's response",
+  "sources": [
+    {
+      "id": "string, document chunk id",
+      "content": "string, relevant content snippet",
+      "source_file": "string, original file path",
+      "section": "string, section name",
+      "page_number": "integer, page number if available"
+    }
+  ],
+  "session_id": "string, session identifier for continuation",
+  "timestamp": "string, ISO 8601 timestamp"
+}
+```
+
+**Error Responses:**
+- `400 Bad Request`: Invalid request format
+- `401 Unauthorized`: Missing or invalid API key
+- `429 Too Many Requests`: Rate limit exceeded
+- `500 Internal Server Error`: Processing error
+
+### Chat - Selection Mode
+`POST /chat/selection`
+
+Initiates a conversation using only the user-provided text selection for context.
+
+**Request Body:**
+```json
+{
+  "message": "string, the user's message or question",
+  "selection": "string, the user-selected text to base answers on",
+  "session_id": "string, optional session identifier",
+  "history": [
+    {
+      "role": "string, either 'user' or 'assistant'",
+      "content": "string, previous message content"
+    }
+  ]
+}
+```
+
+**Response:**
+```json
+{
+  "response": "string, the chatbot's response based only on the selection",
+  "sources": [
+    {
+      "content": "string, relevant content snippet from the selection"
+    }
+  ],
+  "session_id": "string, session identifier for continuation",
+  "timestamp": "string, ISO 8601 timestamp"
+}
+```
+
+**Error Responses:**
+- `400 Bad Request`: Invalid request format or empty selection
+- `401 Unauthorized`: Missing or invalid API key
+- `422 Unprocessable Entity`: Selection too long or invalid
+- `500 Internal Server Error`: Processing error
+
+### Health Check
+`GET /health`
+
+Returns the health status of the service.
+
+**Response:**
+```json
+{
+  "status": "string, either 'healthy' or 'unhealthy'",
+  "timestamp": "string, ISO 8601 timestamp",
+  "dependencies": {
+    "qdrant": "string, status of vector database connection",
+    "postgres": "string, status of relational database connection",
+    "openai": "string, status of OpenAI API connection"
+  }
+}
+```
+
+**Error Responses:**
+- `503 Service Unavailable`: One or more dependencies are unhealthy

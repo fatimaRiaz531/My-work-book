@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "rag-chatbot-widget": "file:chat-widget"
+  }
+}
