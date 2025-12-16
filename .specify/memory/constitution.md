@@ -1,72 +1,173 @@
-<!-- SYNC IMPACT REPORT
-Version change: 1.0.0 → 1.1.0
-Modified principles: All principles updated for RAG Chatbot project
-Added sections: Technical standards section with backend, LLM integration, databases, and frontend requirements
-Removed sections: Old book creation specific sections
-Templates requiring updates: ✅ Updated /specify/templates/plan-template.md, ✅ Updated /specify/templates/spec-template.md, ✅ Updated /specify/templates/tasks-template.md
-Follow-up TODOs: None
--->
+# AI-Native Book Platform Constitution
 
-# Integrated RAG Chatbot for a Published Technical Book — Constitution
+## Vision
+An AI-native book platform that leverages Claude Code Subagents and Agent Skills to provide intelligent, personalized learning experiences through interactive documentation and adaptive content delivery.
+
+## Mission
+To create a modular, scalable, and reusable book platform that integrates advanced AI capabilities while maintaining clean architecture, robust authentication, and exceptional user experience.
 
 ## Core Principles
 
-### I. Accuracy
+### 1. Modularity & Reusability
+- Design all components as reusable subagents and skills
+- Follow the single responsibility principle
+- Create composable, interoperable modules
+- Prioritize API-first design for maximum flexibility
 
-All chatbot answers must be grounded strictly in the book content. No information outside the book should be provided by the chatbot.
+### 2. AI-Native Integration
+- Leverage Claude Code Subagents for specialized tasks
+- Implement Agent Skills for enhanced functionality
+- Design for seamless AI-human collaboration
+- Enable contextual intelligence throughout the platform
 
-### II. Faithfulness
+### 3. User-Centric Design
+- Implement robust authentication and personalization
+- Prioritize accessibility and inclusive design
+- Ensure responsive, intuitive user interfaces
+- Support diverse learning styles and preferences
 
-No hallucination; answers must be traceable to retrieved chunks. Every response must be verifiable against the source material.
+### 4. Quality & Maintainability
+- Write clean, well-documented code
+- Follow consistent architectural patterns
+- Implement comprehensive testing strategies
+- Maintain high performance and reliability standards
 
-### III. Reproducibility
+## Technical Architecture Guidelines
 
-RAG pipeline must be fully reproducible locally and in deployment. All processes should be documented and repeatable.
+### System Design
+- Microservices architecture with clear service boundaries
+- Event-driven communication patterns
+- API versioning and backward compatibility
+- Circuit breaker and retry mechanisms for resilience
 
-### IV. Security
+### Security & Privacy
+- Zero-trust security model
+- End-to-end encryption for sensitive data
+- Role-based access control (RBAC)
+- Regular security audits and penetration testing
 
-API keys must be handled via environment variables only. No hardcoded credentials or secrets in the codebase.
+### Performance & Scalability
+- Horizontal scaling capabilities
+- Caching strategies at multiple levels
+- Database optimization and indexing
+- CDN for static asset delivery
 
-### V. Accessibility
+## Subagent and Skill Integration
 
-Chatbot must support answering from full book and user-selected text. Multiple interaction modes should be available.
+### Subagent Design Principles
+- Each subagent should have a single, well-defined purpose
+- Subagents must be independently deployable and testable
+- Implement proper error handling and logging
+- Design for idempotent operations where possible
 
-## Technical Standards
+### Skill Integration Requirements
+- Standardized skill interface and contract
+- Skill discovery and registration mechanism
+- Fallback strategies for skill unavailability
+- Performance monitoring for skill execution
 
-- **Backend:** FastAPI (Python)
-- **LLM Integration:** OpenAI Agents SDK / ChatKit SDK
-- **Vector Database:** Qdrant Cloud (Free Tier)
-- **Relational Database:** Neon Serverless Postgres
-- **Frontend Embed:** Docusaurus-compatible widget or iframe
-- **Retrieval:** Semantic vector search + optional metadata filtering
-- **Citation:** Responses must reference source sections/pages when applicable
+### Orchestration Patterns
+- Centralized coordination with decentralized execution
+- Asynchronous processing for long-running tasks
+- State management for multi-step workflows
+- Graceful degradation when skills are unavailable
 
-## Technical Requirements
+## Authentication & Personalization Architecture
 
-- **Build Structure:** Use Spec-Kit Plus with `/spec/features`, `/spec/system`, `/spec/api`, `/spec/models`.
-- **Content Processing:** Implement document chunking and embedding pipeline.
-- **Publishing:** Integrate chatbot widget into Docusaurus documentation pages.
-- **Deployment:** Deploy to cloud platform with secure API key management.
-- **Final Format:** Embeddable chat widget with full RAG functionality.
+### Identity Management
+- OAuth 2.0/OpenID Connect for secure authentication
+- Multi-factor authentication support
+- Social login integration options
+- Passwordless authentication alternatives
 
-## Content Quality Requirements
+### Personalization Engine
+- User preference and behavior tracking
+- Adaptive content recommendation
+- Customizable learning paths
+- Progress tracking and analytics
 
-- **Grounding:** All responses must be grounded in book content.
-- **Traceability:** Citations must point to specific sections/pages in the source book.
-- **Relevance:** Responses must be contextually relevant to user queries.
-- **Completeness:** Provide comprehensive answers based on available content.
-- **Consistency:** Maintain consistent tone and accuracy across all responses.
+### Data Privacy
+- GDPR and CCPA compliance
+- Data minimization principles
+- User consent management
+- Right to deletion implementation
 
-## Success Criteria
+## Code Standards
 
-- Chatbot fully integrated with RAG pipeline.
-- All responses verified with source citations and grounding requirements.
-- Build passes deployment and security checks.
-- Widget integrates seamlessly with Docusaurus documentation.
-- Meets all accuracy, faithfulness, and security requirements.
+### Naming Conventions
+- Use descriptive, intention-revealing names
+- Follow consistent casing patterns (camelCase, PascalCase, etc.)
+- Avoid abbreviations and acronyms unless widely understood
+- Use domain-specific terminology consistently
+
+### Documentation Practices
+- Comprehensive inline documentation
+- Architecture decision records (ADRs) for significant choices
+- API documentation with examples
+- User guides and tutorials
+
+### Testing Strategy
+- Test-driven development (TDD) for critical components
+- Unit tests with high coverage (>90%)
+- Integration tests for service interactions
+- End-to-end tests for user workflows
+
+### Performance Standards
+- Page load times under 2 seconds
+- API response times under 500ms (p95)
+- 99.9% uptime SLA
+- Mobile-first responsive design
+
+## Quality Assurance
+
+### Code Review Process
+- Mandatory peer reviews for all changes
+- Automated code quality checks
+- Security scanning integration
+- Performance impact assessment
+
+### Continuous Integration/Deployment
+- Automated testing pipeline
+- Blue-green deployment strategies
+- Feature flag management
+- Rollback capability for all deployments
+
+## Risk Management
+
+### Technical Risks
+- Third-party dependency management
+- Vendor lock-in mitigation
+- Technology obsolescence planning
+- Capacity planning and scaling
+
+### Security Risks
+- Data breach prevention
+- API abuse protection
+- Credential management
+- Audit trail maintenance
+
+## Success Metrics
+
+### Platform Health
+- System availability and uptime
+- Response time performance
+- Error rate monitoring
+- Resource utilization efficiency
+
+### User Experience
+- User engagement and retention
+- Task completion rates
+- User satisfaction scores
+- Accessibility compliance
+
+### Business Value
+- Feature adoption rates
+- Time-to-market for new features
+- Maintenance cost optimization
+- Scalability effectiveness
 
 ## Governance
 
 This constitution supersedes all other project practices. Amendments require documentation, approval, and a migration plan. All PRs/reviews must verify compliance. Complexity must be justified.
 
-**Version**: 1.1.0 | **Ratified**: 2025-12-14 | **Last Amended**: 2025-12-14
+**Version**: 1.0.0 | **Ratified**: 2025-12-16 | **Last Amended**: 2025-12-16
