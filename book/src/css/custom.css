@@ -9,25 +9,138 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #d2691e; /* Brown color */
+  --ifm-color-primary-dark: #b85c1a; /* Darker brown */
+  --ifm-color-primary-darker: #a85417; /* Even darker brown */
+  --ifm-color-primary-darkest: #8b4513; /* Dark brown */
+  --ifm-color-primary-light: #dd7a30; /* Lighter brown */
+  --ifm-color-primary-lighter: #e28442; /* Even lighter brown */
+  --ifm-color-primary-lightest: #e79d63; /* Lightest brown */
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(210, 105, 30, 0.1);
+
+  /* Orange accents */
+  --ifm-color-secondary: #ff8c00; /* Orange color */
+  --ifm-color-info: #ff8c00; /* Orange for info messages */
+  --ifm-color-warning: #ffa500; /* Orange for warnings */
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #e6a25c; /* Lighter brown for dark mode */
+  --ifm-color-primary-dark: #d2691e; /* Brown */
+  --ifm-color-primary-darker: #b85c1a; /* Darker brown */
+  --ifm-color-primary-darkest: #8b4513; /* Dark brown */
+  --ifm-color-primary-light: #f0c47e; /* Light brown */
+  --ifm-color-primary-lighter: #f6d8a8; /* Lighter brown */
+  --ifm-color-primary-lightest: #f9e6c3; /* Lightest brown */
+
+  /* Orange accents for dark mode */
+  --ifm-color-secondary: #ff8c00; /* Orange */
+  --ifm-color-info: #ff8c00; /* Orange for info */
+  --ifm-color-warning: #ffa500; /* Orange for warnings */
+}
+
+/* Make text black in dark mode */
+[data-theme='dark'] {
+  color: #000000; /* Black text */
+}
+
+[data-theme='dark'] .markdown {
+  color: #000000; /* Black text for markdown content */
+}
+
+[data-theme='dark'] h1,
+[data-theme='dark'] h2,
+[data-theme='dark'] h3,
+[data-theme='dark'] h4,
+[data-theme='dark'] h5,
+[data-theme='dark'] h6 {
+  color: #000000; /* Black headings */
+}
+
+[data-theme='dark'] p,
+[data-theme='dark'] li,
+[data-theme='dark'] span,
+[data-theme='dark'] div {
+  color: #000000; /* Black for other text elements */
+}
+
+/* Background styling */
+body {
+  background: linear-gradient(135deg, #f9f1e1 0%, #e6d3b7 100%); /* Light brown to beige gradient */
+}
+
+/* Navbar styling */
+.navbar {
+  background: linear-gradient(90deg, #8b4513 0%, #d2691e 100%); /* Brown gradient */
+  color: white;
+}
+
+/* Sidebar styling */
+.menu {
+  background-color: #f9f1e1; /* Light beige background */
+}
+
+/* Card styling */
+.card {
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  border: 1px solid #d2691e; /* Brown border */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(210, 105, 30, 0.1);
+}
+
+/* Buttons styling */
+.button {
+  background: linear-gradient(90deg, #d2691e 0%, #ff8c00 100%); /* Brown to orange gradient */
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: linear-gradient(90deg, #b85c1a 0%, #ff7700 100%); /* Darker gradient on hover */
+}
+
+/* Chatbot widget styling */
+.chatbot-container {
+  --chatbot-primary: #d2691e;
+  --chatbot-secondary: #ff8c00;
+}
+
+.chatbot-window {
+  background: white;
+  border: 2px solid #d2691e;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(210, 105, 30, 0.2);
+}
+
+.chatbot-header {
+  background: linear-gradient(90deg, #d2691e 0%, #ff8c00 100%);
+  color: white;
+  border-radius: 6px 6px 0 0;
+}
+
+.chat-messages {
+  background-color: #fffaf0; /* Floral white, light beige */
+}
+
+.user-message {
+  background-color: #ffeedd; /* Light orange-tinged background */
+  border-left: 3px solid #ff8c00;
+}
+
+.bot-message {
+  background-color: #f9f1e1; /* Light brown background */
+  border-left: 3px solid #d2691e;
+}
+
+/* Code blocks styling */
+.docusaurus-highlight-code-line {
+  background-color: rgba(210, 105, 30, 0.1); /* Light brown highlight */
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
 }

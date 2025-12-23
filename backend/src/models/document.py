@@ -1,5 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, Text, UUID
-from sqlalchemy.dialects.postgresql import UUID as PostgresUUID
+from sqlalchemy import Column, Integer, String, DateTime, Text
 from sqlalchemy.sql import func
 import uuid
 from ..config.database import Base
@@ -8,7 +7,7 @@ from ..config.database import Base
 class Document(Base):
     __tablename__ = "documents"
 
-    id = Column(PostgresUUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
     content = Column(Text, nullable=False)  # The actual content of the document chunk
     source_file = Column(String, nullable=False)  # Original file path from Docusaurus project
     section = Column(String, nullable=True)  # Section name or heading

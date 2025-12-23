@@ -74,6 +74,15 @@ const config = {
     ],
   ],
 
+  plugins: [
+    // Add any required plugins here
+  ],
+
+  // Make environment variables available to client-side code
+  customFields: {
+    REACT_APP_API_URL: process.env.REACT_APP_API_URL || 'http://localhost:8000/api/v1',
+  },
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({

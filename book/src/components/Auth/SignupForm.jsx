@@ -34,11 +34,11 @@ const SignupForm = ({ onSignupSuccess }) => {
         formData.hardwareBackground
       );
 
-      if (result.error) {
-        setError(result.error);
+      if (!result.success) {
+        setError(result.message || 'An error occurred during signup');
       } else {
-        // Store session token in localStorage
-        localStorage.setItem('better-auth-session-token', result.session.token);
+        // Store session token in localStorage (the token is already in the response)
+        localStorage.setItem('better-auth-session-token', result.user.token);
         onSignupSuccess(result.user);
       }
     } catch (err) {

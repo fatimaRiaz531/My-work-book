@@ -25,11 +25,11 @@ const LoginForm = ({ onLoginSuccess }) => {
     try {
       const result = await login(formData.email, formData.password);
 
-      if (result.error) {
-        setError(result.error);
+      if (!result.success) {
+        setError(result.message || 'An error occurred during login');
       } else {
-        // Store session token in localStorage
-        localStorage.setItem('better-auth-session-token', result.session.token);
+        // Store session token in localStorage (the token is already in the response)
+        localStorage.setItem('better-auth-session-token', result.user.token);
         onLoginSuccess(result.user);
       }
     } catch (err) {

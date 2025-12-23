@@ -1,6 +1,32 @@
 {
+  "name": "physical-ai-humanoid-book",
+  "version": "1.0.0",
+  "description": "Physical AI & Humanoid Robotics Course Book with RAG Chatbot and Personalization",
+  "scripts": {
+    "build": "cd book && npm run build",
+    "dev": "concurrently \"cd book && npm run start\" \"cd backend && python -m uvicorn src.api.main:app --reload --port=8000\"",
+    "dev:book": "cd book && npm run start",
+    "dev:api": "cd backend && python -m uvicorn src.api.main:app --reload --port=8000",
+    "setup": "npm install && cd book && npm install",
+    "deploy:book": "cd book && npm run build && vercel --prod",
+    "deploy:api": "vercel backend/api.py --prod"
+  },
   "dependencies": {
+    "concurrently": "^8.2.0",
     "cors": "^2.8.5",
     "express": "^5.2.1"
-  }
+  },
+  "keywords": [
+    "docusaurus",
+    "fastapi",
+    "rag",
+    "chatbot",
+    "ai",
+    "robotics",
+    "physical-ai",
+    "humanoid",
+    "education"
+  ],
+  "author": "Panaversity",
+  "license": "MIT"
 }

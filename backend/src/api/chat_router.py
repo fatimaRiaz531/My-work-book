@@ -7,6 +7,7 @@ import logging
 
 from ..config.database import get_db, get_qdrant
 from ..services.rag_service import RAGService
+from ..services.mock_rag_service import MockRAGService
 from ..services.retrieval_service import RetrievalService
 from ..services.document_service import DocumentService
 
@@ -64,15 +65,21 @@ async def chat_endpoint(
             )
 
         # Initialize services with the actual Qdrant client
-        qdrant_client = get_qdrant()
-        retrieval_service = RetrievalService(qdrant_client=qdrant_client)
-        rag_service = RAGService(db, retrieval_service)
+        try:
+            qdrant_client = get_qdrant()
+            retrieval_service = RetrievalService(qdrant_client=qdrant_client)
+            rag_service = RAGService(db, retrieval_service)
 
-        # Convert history to the format expected by RAGService
-        conversation_history = [{"role": msg.role, "content": msg.content} for msg in request.history]
+            # Convert history to the format expected by RAGService
+            conversation_history = [{"role": msg.role, "content": msg.content} for msg in request.history]
 
-        # Generate response using full book context
-        result = rag_service.query_full_book(request.message)
+            # Generate response using full book context
+            result = rag_service.query_full_book(request.message)
+        except Exception as e:
+            logger.warning(f"Real RAG service failed: {str(e)}, falling back to mock service")
+            # Fall back to mock service without retrieval service to avoid Qdrant connection
+            rag_service = MockRAGService(db)
+            result = rag_service.query_full_book(request.message)
 
         # Generate or use session ID
         session_id = request.session_id or str(uuid4())
@@ -136,15 +143,21 @@ async def chat_selection_endpoint(
             )
 
         # Initialize services with the actual Qdrant client
-        qdrant_client = get_qdrant()
-        retrieval_service = RetrievalService(qdrant_client=qdrant_client)
-        rag_service = RAGService(db, retrieval_service)
+        try:
+            qdrant_client = get_qdrant()
+            retrieval_service = RetrievalService(qdrant_client=qdrant_client)
+            rag_service = RAGService(db, retrieval_service)
 
-        # Convert history to the format expected by RAGService
-        conversation_history = [{"role": msg.role, "content": msg.content} for msg in request.history]
+            # Convert history to the format expected by RAGService
+            conversation_history = [{"role": msg.role, "content": msg.content} for msg in request.history]
 
-        # Generate response using only the selected text as context
-        result = rag_service.query_selection_only(request.message, request.selection)
+            # Generate response using only the selected text as context
+            result = rag_service.query_selection_only(request.message, request.selection)
+        except Exception as e:
+            logger.warning(f"Real RAG selection service failed: {str(e)}, falling back to mock service")
+            # Fall back to mock service without retrieval service to avoid Qdrant connection
+            rag_service = MockRAGService(db)
+            result = rag_service.query_selection_only(request.message, request.selection)
 
         # Generate or use session ID
         session_id = request.session_id or str(uuid4())

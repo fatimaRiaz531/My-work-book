@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m py_compile backend/src/api/chat_router.py backend/src/api/main.py backend/serverless_handler.py)"
+    ]
+  }
+}

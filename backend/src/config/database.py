@@ -5,13 +5,28 @@ from qdrant_client import QdrantClient
 from typing import Optional
 from .settings import settings
 import logging
+import os
 
 logger = logging.getLogger(__name__)
 
-# Postgres Database setup
+# Database setup - supports both PostgreSQL and SQLite
 SQLALCHEMY_DATABASE_URL = settings.database_url
 
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+if SQLALCHEMY_DATABASE_URL.startswith("sqlite"):
+    # For SQLite, we need to create the directory if it doesn't exist
+    db_path = SQLALCHEMY_DATABASE_URL.replace("sqlite:///", "")
+    db_dir = os.path.dirname(db_path)
+    if db_dir and not os.path.exists(db_dir):
+        os.makedirs(db_dir)
+
+    engine = create_engine(
+        SQLALCHEMY_DATABASE_URL,
+        connect_args={"check_same_thread": False}  # Required for SQLite
+    )
+else:
+    # For PostgreSQL
+    engine = create_engine(SQLALCHEMY_DATABASE_URL)
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()

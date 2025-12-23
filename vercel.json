@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "name": "physical-ai-book",
+  "builds": [
+    {
+      "src": "book/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "zeroConfig": true,
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html",
+      "headers": {
+        "Cache-Control": "public, max-age=0"
+      }
+    }
+  ],
+  "github": {
+    "silent": true
+  }
+}

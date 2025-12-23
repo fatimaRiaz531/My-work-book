@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "name": "physical-ai-backend",
+  "builds": [
+    {
+      "src": "backend/api.py",
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.10"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "backend/api.py"
+    }
+  ]
+}

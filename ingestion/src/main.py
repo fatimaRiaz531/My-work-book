@@ -16,15 +16,8 @@ logger = logging.getLogger(__name__)
 
 def setup_qdrant_collection():
     """Set up the Qdrant collection for storing embeddings."""
-    if settings.qdrant_api_key:
-        client = QdrantClient(
-            url=settings.qdrant_url,
-            api_key=settings.qdrant_api_key,
-            prefer_grpc=False
-        )
-    else:
-        # For local development
-        client = QdrantClient(host="localhost", port=6333)
+    # Force local Qdrant for development
+    client = QdrantClient(host="localhost", port=6333)
 
     # Check if collection exists
     try:

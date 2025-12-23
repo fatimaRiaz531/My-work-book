@@ -188,3 +188,46 @@
     max-width: 90%;
   }
 }
+
+/* Dark mode support for chatbot */
+[data-theme='dark'] .chatbot-toggle {
+  background: #2563eb;
+}
+
+[data-theme='dark'] .chatbot-toggle:hover {
+  background: #3b82f6;
+}
+
+[data-theme='dark'] .chatbot-header {
+  background: #374151;
+}
+
+[data-theme='dark'] .chat-messages {
+  background: #1f2937;
+}
+
+[data-theme='dark'] .welcome-message {
+  color: #d1d5db;
+}
+
+[data-theme='dark'] .bot-message .message-content {
+  background: #374151;
+  color: #f9fafb;
+}
+
+[data-theme='dark'] .sources {
+  border-top: 1px solid #4b5563;
+}
+
+[data-theme='dark'] .sources h4 {
+  color: #9ca3af;
+}
+
+[data-theme='dark'] .sources li {
+  color: #d1d5db;
+}
+
+[data-theme='dark'] .chat-input-area {
+  background: #1f2937;
+  border-top: 1px solid #374151;
+}

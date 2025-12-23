@@ -7,8 +7,10 @@ const ChatbotWidget = () => {
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  // Configuration
-  const API_BASE_URL = 'http://localhost:8000/api/v1';
+  // Configuration - use environment-based API URL for production
+  // For Vercel deployment, this will be configured as an environment variable
+  // Default to a known backend URL to work with proxy setups
+  const API_BASE_URL = typeof process !== 'undefined' && process.env ? (process.env.REACT_APP_API_URL || 'http://localhost:8000/api/v1') : 'http://localhost:8000/api/v1';
 
   // Function to get selected text
   const getSelectedText = () => {

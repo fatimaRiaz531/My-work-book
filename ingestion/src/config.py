@@ -16,7 +16,7 @@ class IngestionSettings(BaseSettings):
     embedding_model: str = "text-embedding-ada-002"
 
     # Qdrant Configuration
-    qdrant_url: str
+    qdrant_url: str = "http://localhost:6333"  # Default local Qdrant
     qdrant_api_key: Optional[str] = None
     qdrant_collection_name: str = "book_embeddings"
 
