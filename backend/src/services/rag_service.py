@@ -33,6 +33,13 @@ class RAGService:
         Returns:
             Dictionary containing the response and sources
         """
+        # First, check if we can provide a sample response based on keywords
+        # This handles cases where context_documents is empty but we still want to provide value
+        if not context_documents:
+            sample_response = self._get_sample_response(query)
+            if sample_response:
+                return sample_response
+
         try:
             # Prepare context from retrieved documents
             context_text = "\n\n".join([doc["content"] for doc in context_documents])
@@ -97,10 +104,23 @@ class RAGService:
 
         except Exception as e:
             logger.error(f"Error generating response: {str(e)}")
-            return {
-                "response": "Not found in provided content",
-                "sources": []
-            }
+            # Check if this is an OpenAI quota error
+            error_str = str(e).lower()
+            if "quota" in error_str or "429" in error_str or "rate limit" in error_str or "insufficient_quota" in error_str:
+                # Try to provide a helpful response based on keywords
+                sample_response = self._get_sample_response(query)
+                if sample_response:
+                    return sample_response
+                else:
+                    return {
+                        "response": "I'm the Book Assistant. I have information about Physical AI, Humanoid Robots, ROS2, Gazebo, Isaac, VLA models, and Robotics applications. However, I cannot process your query right now due to API limitations. Please try asking about these specific topics!",
+                        "sources": []
+                    }
+            else:
+                return {
+                    "response": "Not found in provided content",
+                    "sources": []
+                }
 
     def query_full_book(self, query: str, top_k: int = 5) -> Dict[str, Any]:
         """
