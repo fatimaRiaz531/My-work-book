@@ -215,6 +215,12 @@ class RAGService:
         Returns:
             Dictionary containing the response and sources
         """
+        # First, try to provide a sample response based on keywords
+        # This will work even if OpenAI API is not available
+        sample_response = self._get_sample_response(query)
+        if sample_response:
+            return sample_response
+
         try:
             # Create a context document from the selected text
             context_documents = [{
@@ -231,7 +237,15 @@ class RAGService:
 
         except Exception as e:
             logger.error(f"Error in selection-only query: {str(e)}")
-            return {
-                "response": "Not found in provided content",
-                "sources": []
-            }
+            # Check if this is an OpenAI quota error and provide a more helpful response
+            error_str = str(e).lower()
+            if "quota" in error_str or "429" in error_str or "rate limit" in error_str or "insufficient_quota" in error_str:
+                return {
+                    "response": "I'm the Book Assistant. I have information about Physical AI, Humanoid Robots, ROS2, Gazebo, Isaac, VLA models, and Robotics applications. However, I cannot process your query right now due to API limitations.",
+                    "sources": []
+                }
+            else:
+                return {
+                    "response": "Not found in provided content",
+                    "sources": []
+                }
